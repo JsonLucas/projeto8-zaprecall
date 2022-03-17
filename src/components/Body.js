@@ -1,27 +1,25 @@
 import SectionFlashCards from './SectionFlashCards';
 import Footer from './Footer';
-import React from 'react';
+import { Fragment } from 'react';
 function Body(){
-    function renderInitial(){
-        alert('hello world');
-    }
+    const sectionInitial = <section className='section-initial'>
+        <div className='container-initial'>
+            <div className='initial'>
+                <div className='logo'>
+                    <img src='./images/logo.png' />                    
+                </div>
+                <div className='name-logo'>Zap Recall</div>
+            </div>
+        </div>
+    </section>; 
     return (
-        <React.Fragment>
+        <Fragment>
             <section className='body'>
-                <section className='section-initial'>
-                    <div className='container-initial'>
-                        <div className='initial'>
-                            <div className='logo'>
-                                <img src='./images/logo.png' />                    
-                            </div>
-                            <div className='name-logo'>Zap Recall</div>
-                        </div>
-                    </div>
-                </section>
+                {sectionInitial}
                 <SectionFlashCards />
             </section>
             <Footer />
-        </React.Fragment>
+        </Fragment>
     );
 }
 
