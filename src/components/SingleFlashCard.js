@@ -7,6 +7,7 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
         const toShow = [...questionText];
         toShow[filterId] = questions[filterId];
         setQuestion(toShow);
+        document.querySelectorAll(`.single-card`)[filterId].classList.add('opened-card');
         document.querySelector(`#${id}`).classList.add('hidden');
         document.querySelector(`#img-${filterId}`).classList.remove('hidden');
     }
@@ -43,6 +44,7 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
         setQuestion(alterQuestionText);
         setCont(cont+1);
         setAvaliation([...avaliations, avaliationValue]);
+        document.querySelectorAll(`.single-card`)[id].classList.remove('opened-card');
         document.querySelectorAll('.btns')[id].classList.add('hidden');
     }
 
@@ -76,14 +78,14 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
                     </div>
                     <div className='btns hidden'>
                         <div className='single-btn'>
-                            <input onClick={cardAvaliation} className='btn-forget' id={`forget-${index}`} 
-                            type='button' value='Não lembrei'/></div>
+                            <button onClick={cardAvaliation} className='btn-forget' id={`forget-${index}`} 
+                            value='Não lembrei'>Não lembrei</button></div>
                         <div className='single-btn'>
-                            <input onClick={cardAvaliation} className='btn-half' id={`half-${index}`}
-                            type='button' value='Quase esqueci'/></div>
+                            <button onClick={cardAvaliation} className='btn-half' id={`half-${index}`}
+                            value='Quase esqueci'>Quase esqueci</button></div>
                         <div className='single-btn'>
-                            <input onClick={cardAvaliation} className='btn-zap' id={`zap-${index}`}
-                            type='button' value='Zap!'/></div>
+                            <button onClick={cardAvaliation} className='btn-zap' id={`zap-${index}`}
+                            value='Zap!'>Zap!</button></div>
                     </div>
                 </div>
             )}

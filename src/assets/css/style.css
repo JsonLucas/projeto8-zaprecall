@@ -4,26 +4,52 @@
     margin: 0;
     padding: 0;
 }
-.main{
-    position: absolute;
-    width: 100%;
-    height: 100%;
+button{
+    cursor: pointer;
+}
+body{
     background-color:#fb6b6b;
 }
-.name-logo{
+.main{
+    width: 100%;
+}
+.name-logo, .initial-name-logo{
     padding-top: 15px;
     color: white;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 40px;
 }
-.initial{
-    padding: 20px;
+.initial, .start-initial, .init-recall{
     min-width: 200px;
     max-width: 300px;
     margin: auto;
+}
+.start-initial{
+    margin-top: 100px;
+}
+.init-recall{
+    padding-top: 50px;
+}
+.btn-start{
+    border: 1px solid rgb(215, 9, 0);
+    border-radius: 5px;
+    padding: 15px;
+    color: #fb6b6b;
+    font-weight: bold;
+    background-color: white;
+    font-size: 15px;
+    font-family: 'Hammersmith One', sans-serif;
+    width: 100%;
+}
+.initial-logo{
+    width: 20%;
+}
+.initial-logo, .initial-name-logo{
+    margin: auto;
+}
+.initial{
     display: flex;
     justify-content: space-around;
-} /* colocar alguns media por aki */
+}
 .single-card{
     min-width: 100px;
     max-width: 550px;
@@ -34,24 +60,32 @@
     padding: 10px;
     position: relative; 
 }
+.opened-card{
+    background-color: rgb(255, 255, 212);
+    height: 100px;
+}
 .question-text{
     width: 90%;
     word-wrap: break-word;
     font-family: 'Hammersmith One', sans-serif;
-    font-size: 20px;
 }
 .logo-pointer{
     position: absolute;
     right: 10px;
-    top: 5px;
+    bottom: 0px;
     cursor: pointer;
     font-size: 30px;
 }
 .btns{
-    width: 100%;
+    width: 96%;
+    position: absolute;
+    bottom: 5px;
     display: flex;
     justify-content: space-between;
     font-family: 'Hammersmith One', sans-serif;
+}
+.single-btn{
+    width: 30%;
 }
 .btn-forget, .btn-half, .btn-zap{
     padding: 15px;
@@ -60,6 +94,8 @@
     border: none;
     text-align: center;
     word-wrap: break-word;
+    width: 100%;
+    height: 100%;
 }
 .btn-forget{
     background-color: rgb(255, 48, 48);
@@ -94,10 +130,12 @@
     text-align: center;
     font-size: 20px;
 }
-.concluded{
+.concluded, .restart{
     margin: auto;
     width: 250px;
     word-wrap: break-word;
+}
+.concluded{
     padding-top: 10px;
 }
 .message{
@@ -110,6 +148,16 @@
 }
 .answers > div{
     margin: auto;
+}
+.btn-restart{
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    background-color: #fb6b6b;
+    font-size: 15px;
+    font-family: 'Hammersmith One', sans-serif;
+    width: 100%;
 }
 .hidden{
     display: none;

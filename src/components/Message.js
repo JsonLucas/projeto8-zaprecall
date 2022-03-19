@@ -16,6 +16,8 @@ function Message({avaliations, cont}){
             </Fragment>
         );
     }else{
+        document.querySelector('.footer').style.height = '150px';
+        document.querySelector('.restart').classList.remove('hidden');
         if(isForgot.length !== 0){
             return (
                 <Fragment>
