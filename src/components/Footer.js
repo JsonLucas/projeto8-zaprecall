@@ -1,12 +1,19 @@
-function Footer(){
+import Message from './Message';
+function Footer({icon, cont, avaliations}){
     return(
         <footer className='footer'>
             <div className='container'>
                 <div className='progress'>
-                    <p>0/8 concluído</p>
+                    <Message avaliations={avaliations} cont={cont} />
+                    <div className='answers'>
+                        {icon.map(item => 
+                            <div className='avaliation-icons'>{item}</div>
+                        )}
+                    </div>
                 </div>
             </div>
         </footer>
     );
 }
-export default Footer;
+
+export {Footer};

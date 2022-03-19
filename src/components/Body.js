@@ -1,24 +1,19 @@
 import SectionFlashCards from './SectionFlashCards';
-import Footer from './Footer';
-import { Fragment } from 'react';
-function Body(){
-    const sectionInitial = <section className='section-initial'>
-        <div className='container-initial'>
-            <div className='initial'>
-                <div className='logo'>
-                    <img src='./images/logo.png' />                    
-                </div>
-                <div className='name-logo'>Zap Recall</div>
-            </div>
-        </div>
-    </section>; 
+import Header from './Header';
+import { Footer } from './Footer';
+import { useState, Fragment } from 'react';
+function Body(){ 
+    const [icon, setIcon] = useState([]);
+    const [cont, setCont] = useState(0);
+    const [avaliations, setAvaliation] = useState([]);
     return (
         <Fragment>
             <section className='body'>
-                {sectionInitial}
-                <SectionFlashCards />
+                <Header />
+                <SectionFlashCards icon={icon} setIcon={setIcon} 
+                cont={cont} setCont={setCont} avaliations={avaliations} setAvaliation={setAvaliation}/>
             </section>
-            <Footer />
+            <Footer icon={icon} cont={cont} avaliations={avaliations} />
         </Fragment>
     );
 }
