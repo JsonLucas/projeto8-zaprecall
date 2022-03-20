@@ -1,4 +1,4 @@
-import SingleFlashCard from "./SingleFlashCard";
+import SingleFlashCard from "./subcomponents/SingleFlashCard";
 function SectionFlashCards({icon, setIcon, cont, setCont, avaliations, setAvaliation}){
     return(
         <section className='section-flash-cards'>

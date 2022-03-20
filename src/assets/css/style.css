@@ -39,6 +39,7 @@ body{
     font-size: 15px;
     font-family: 'Hammersmith One', sans-serif;
     width: 100%;
+    margin-top: 10px;
 }
 .initial-logo{
     width: 20%;
@@ -158,6 +159,21 @@ body{
     font-size: 15px;
     font-family: 'Hammersmith One', sans-serif;
     width: 100%;
+}
+.ipt-goal{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fb6b6b;
+    background-color: white;
+    font-family: 'Hammersmith One', sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+}
+.disabled{
+    background-color: rgb(232, 232, 232);
+    color: rgb(192, 192, 192);
+    border: none;
 }
 .hidden{
     display: none;

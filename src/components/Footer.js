@@ -1,5 +1,5 @@
-import Message from './Message';
-function Footer({icon, cont, avaliations, unsetInit, setRestart}){
+import Message from './subcomponents/Message';
+function Footer({icon, cont, avaliations, unsetInit, setRestart, goalZaps}){
     function restartRecall(){
         unsetInit(false);
         setRestart(true);
@@ -8,7 +8,7 @@ function Footer({icon, cont, avaliations, unsetInit, setRestart}){
         <footer className='footer'>
             <div className='container'>
                 <div className='progress'>
-                    <Message avaliations={avaliations} cont={cont} />
+                    <Message avaliations={avaliations} cont={cont} goalZaps={goalZaps}/>
                     <div className='answers'>
                         {icon.map(item => 
                             <div className='avaliation-icons'>{item}</div>

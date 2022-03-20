@@ -1,5 +1,6 @@
-import setinha from './../assets/images/setinha.png';
 import { useState, Fragment } from 'react';
+import CardButtons from './CardButtons';
+import PointerTurnCard from './PointerTurnCard';
 function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliation}){
     function viewQuestion(e){
         const id = e.target.id;
@@ -69,24 +70,9 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
             {questionText.map((item, index) => 
                 <div className='single-card'>
                     <div className='question-text'>{item}</div>
-                    <div className='logo-pointer' id={`pointer-${index}`}>
-                        <ion-icon onClick={viewQuestion} id={`icon-${index}`} 
-                        name="play-outline"></ion-icon>
-                        <img onClick={viewAnswer} id={`img-${index}`} 
-                        className='hidden' src={setinha} />
-                        <span className='result-avaliation'>{icon[index]}</span>
-                    </div>
-                    <div className='btns hidden'>
-                        <div className='single-btn'>
-                            <button onClick={cardAvaliation} className='btn-forget' id={`forget-${index}`} 
-                            value='Não lembrei'>Não lembrei</button></div>
-                        <div className='single-btn'>
-                            <button onClick={cardAvaliation} className='btn-half' id={`half-${index}`}
-                            value='Quase esqueci'>Quase esqueci</button></div>
-                        <div className='single-btn'>
-                            <button onClick={cardAvaliation} className='btn-zap' id={`zap-${index}`}
-                            value='Zap!'>Zap!</button></div>
-                    </div>
+                    <PointerTurnCard index={index} viewQuestion={viewQuestion} 
+                    viewAnswer={viewAnswer} icon={icon}/>
+                    <CardButtons index={index} cardAvaliation={cardAvaliation}/>
                 </div>
             )}
         </Fragment>    
