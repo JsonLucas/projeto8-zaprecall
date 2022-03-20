@@ -1,4 +1,5 @@
-import { useState, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
+import { render } from 'react-dom';
 import CardButtons from './CardButtons';
 import PointerTurnCard from './PointerTurnCard';
 function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliation}){
@@ -25,11 +26,12 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
         const avaliationValue = e.target.value;
         const id = parseInt(e.target.id[e.target.id.length - 1]); 
         const alterQuestionText = [...questionText];
-        alterQuestionText[id] = cardText[id];
+        const resultAvaliation = document.querySelectorAll('.result-avaliation')[id];
         let currentIcon;
+        alterQuestionText[id] = cardText[id];
         switch(avaliationValue){
             case 'Zap!':
-                currentIcon = <ion-icon name="checkmark-circle"></ion-icon>; 
+                currentIcon = <ion-icon name="checkmark-circle"></ion-icon>;
                 document.querySelectorAll('.question-text')[id].classList.add('text-zap');
                 break;
             case 'Quase esqueci':
@@ -47,6 +49,7 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
         setAvaliation([...avaliations, avaliationValue]);
         document.querySelectorAll(`.single-card`)[id].classList.remove('opened-card');
         document.querySelectorAll('.btns')[id].classList.add('hidden');
+        render(currentIcon, resultAvaliation);
     }
 
     const questions = ['O que é JSX?', 'O React é __', 'Componentes devem iniciar com __', 
@@ -71,7 +74,7 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
                 <div className='single-card'>
                     <div className='question-text'>{item}</div>
                     <PointerTurnCard index={index} viewQuestion={viewQuestion} 
-                    viewAnswer={viewAnswer} icon={icon}/>
+                    viewAnswer={viewAnswer} />
                     <CardButtons index={index} cardAvaliation={cardAvaliation}/>
                 </div>
             )}
