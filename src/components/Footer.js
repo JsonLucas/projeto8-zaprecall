@@ -1,8 +1,9 @@
 import Message from './subcomponents/Message';
-function Footer({icon, cont, avaliations, unsetInit, setRestart, goalZaps}){
+function Footer({icon, cont, avaliations, unsetInit, setRestart, goalZaps, unsetGoalZaps}){
     function restartRecall(){
         unsetInit(false);
         setRestart(true);
+        unsetGoalZaps(0);
     }
     return(
         <footer className='footer'>

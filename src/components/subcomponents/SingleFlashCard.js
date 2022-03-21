@@ -2,12 +2,12 @@ import React, { useState, Fragment } from 'react';
 import { render } from 'react-dom';
 import CardButtons from './CardButtons';
 import PointerTurnCard from './PointerTurnCard';
-function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliation}){
+function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliation, deck}){
     function viewQuestion(e){
         const id = e.target.id;
         const filterId = parseInt(id[id.length-1]);
         const toShow = [...questionText];
-        toShow[filterId] = questions[filterId];
+        toShow[filterId] = mixedQuestions[filterId];
         setQuestion(toShow);
         document.querySelectorAll(`.single-card`)[filterId].classList.add('opened-card');
         document.querySelector(`#${id}`).classList.add('hidden');
@@ -17,7 +17,7 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
         const id = e.target.id;
         const filterId = parseInt(id[id.length-1]);
         const toShow = [...questionText];
-        toShow[filterId] = answers[filterId];
+        toShow[filterId] = mixedAnswers[filterId];
         setQuestion(toShow);
         document.querySelector(`#${id}`).classList.add('hidden');
         document.querySelectorAll('.btns')[filterId].classList.remove('hidden');
@@ -52,15 +52,15 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
         render(currentIcon, resultAvaliation);
     }
 
-    const questions = ['O que é JSX?', 'O React é __', 'Componentes devem iniciar com __', 
-    'Podemos colocar __ dentro do JSX', 'O ReactDOM nos ajuda __', 'Usamos o npm para __', 
-    'Usamos props para __', 'Usamos estado (state) para __'];    
+    const {questions, answers} = deck;
+    const mixedIndexes = shuffle(questions);
+    const mixedQuestions = mixedIndexes.map((item) => {
+        return questions[item];
+    });
+    const mixedAnswers = mixedIndexes.map((item) => {
+        return answers[item];
+    });
     
-    const answers = ['Uma extensão de linguagem do JavaScript', 'uma biblioteca JavaScript para construção de interfaces', 
-    'letra maiúscula', 'expressões', 'interagindo com a DOM para colocar componentes React na mesma', 
-        'gerenciar os pacotes necessários e suas dependências', 'passar diferentes informações para componentes ', 
-        'dizer para o React quais informações quando atualizadas devem renderizar a tela novamente'];
-        
     let cardText = [];
     for(let i = 0; i < questions.length; i++){
         cardText.push(`Pergunta ${i+1}`);
@@ -80,6 +80,27 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
             )}
         </Fragment>    
     );
+}
+
+function shuffle(questions){
+    let array = [];
+    for(let i = 0; i < questions.length; i++){
+        array.push(Math.floor(Math.random()*questions.length));
+    }
+    array = validateArray(array, questions);
+    return array;
+}
+function validateArray(array, questions){
+    for(let i = 0; i < array.length; i++){
+        for(let j = 0; j < array.length; j++){
+            if(i !== j){
+                if(array[i] === array[j]){
+                    array[j] = Math.floor(Math.random()*questions.length);
+                }
+            }
+        }
+    }
+    return array;
 }
     
 export default SingleFlashCard;

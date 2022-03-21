@@ -1,38 +1,44 @@
 import logo from './../assets/images/logo.png';
-function Initial({setInit, unsetRestart, setGoalZaps}){
-    function start(e){
+import GoalZaps from './subcomponents/GoalZaps';
+import SelectDeck from './subcomponents/SelectDeck';
+function Initial({setInit, unsetRestart, goalZaps, setGoalZaps, setDeck}){
+    function goToSelectDeck(e){
         if(!e.target.classList.contains('disabled')){
-            setInit(true);
-            unsetRestart(false);
             setGoalZaps(parseInt(document.querySelector('.ipt-goal').value));
         }
     }
-    function enableInit(e){
-        const btInit = document.querySelector('.start > button');
-        if(e.target.value !== ''){
-            btInit.classList.remove('disabled');
-        }else{
-            btInit.classList.add('disabled');
-        }
+    function setSelectedDeck(e){
+        setDeck(e.target.value);
     }
-    return (
-        <section className='section-initial'>
-            <div className='start-initial'>
-                <div className='initial-logo'>
-                    <img src={logo} />                    
+    if(goalZaps === 0){
+        return (
+            <section className='section-initial'>
+                <div className='start-initial'>
+                    <div className='initial-logo'>
+                        <img src={logo} />                    
+                    </div>
+                    <div className='initial-name-logo'>ZapRecall</div>
                 </div>
-                <div className='initial-name-logo'>ZapRecall</div>
-            </div>
-            <div className='init-recall'>
-                <div className='goal'>
-                    <input type='number' className='ipt-goal' onChange={enableInit}
-                    placeholder='Digite sua meta de zaps...' />
+                <div className='init-recall'>
+                    <GoalZaps param={goToSelectDeck} btnDisabled={true}/>
                 </div>
-                <div className='start'>
-                    <button className='btn-start disabled' onClick={start}>Iniciar Recall!</button>
+            </section>
+        );
+    }else{
+        return (
+            <section className='section-initial'>
+                <div className='start-initial'>
+                    <div className='initial-logo'>
+                        <img src={logo} />                    
+                    </div>
+                    <div className='initial-name-logo'>ZapRecall</div>
                 </div>
-            </div>
-        </section>
-    );
+                <div className='init-recall'>
+                    <SelectDeck setSelectedDeck={setSelectedDeck} setInit={setInit} 
+                    unsetRestart={unsetRestart} btnDisabled={false}/>
+                </div>
+            </section>
+        );
+    }
 }
 export default Initial;

@@ -12,6 +12,7 @@ body{
 }
 .main{
     width: 100%;
+    padding-bottom: 70px;
 }
 .name-logo, .initial-name-logo{
     padding-top: 15px;
@@ -63,7 +64,7 @@ body{
 }
 .opened-card{
     background-color: rgb(255, 255, 212);
-    height: 100px;
+    height: 120px;
 }
 .question-text{
     width: 90%;
@@ -165,6 +166,16 @@ body{
     padding: 10px;
     border-radius: 5px;
     color: #fb6b6b;
+    background-color: white;
+    font-family: 'Hammersmith One', sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+}
+.select-deck{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgba(100, 100, 100, 0.7);
     background-color: white;
     font-family: 'Hammersmith One', sans-serif;
     box-sizing: border-box;
