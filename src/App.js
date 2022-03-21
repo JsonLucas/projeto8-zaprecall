@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './assets/css/style.css';
 import './assets/css/media.css';
 function App() {
+  let array;
   const deckReact = {
     name:'React', 
     questions:['O que é JSX?', 'O React é __', 'Componentes devem iniciar com __', 
@@ -27,10 +28,27 @@ function App() {
   const [deck, setDeck] = useState(deckReact.name);
   let selectedDeck = {};
   switch(deck){
-    case 'React': selectedDeck = deckReact; break;
-    case 'Teste': selectedDeck = deckTeste; break;
-    default: selectedDeck = deckReact; break;
+    case 'React': 
+      selectedDeck = deckReact; 
+      array = shuffle(deckReact.questions);
+    break;
+    case 'Teste': 
+      selectedDeck = deckTeste; 
+      array = shuffle(deckTeste.questions)
+      break;
+    default: 
+      selectedDeck = deckReact; 
+      array = shuffle(deckReact.questions);
+      break;
   }
+  const mixedQuestions = array.map((item) => {
+    return selectedDeck.questions[item];
+  });
+  const mixedAnswers = array.map((item) => {
+      return selectedDeck.answers[item];
+  });
+  selectedDeck.questions = mixedQuestions;
+  selectedDeck.answers = mixedAnswers;
   if((init) && !(restart)){
     return(
       <main className='main'>
@@ -46,6 +64,28 @@ function App() {
       </main>
     );
   }
+}
+
+
+function shuffle(questions){
+  let array = [];
+  for(let i = 0; i < questions.length; i++){
+      array.push(Math.floor(Math.random()*questions.length));
+  }
+  array = validateArray(array, questions);
+  return array;
+}
+function validateArray(array, questions){
+  for(let i = 0; i < array.length; i++){
+      for(let j = 0; j < array.length; j++){
+          if(i !== j){
+              if(array[i] === array[j]){
+                  array[j] = Math.floor(Math.random()*questions.length);
+              }
+          }
+      }
+  }
+  return array;
 }
 
 export default App;

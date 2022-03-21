@@ -7,7 +7,7 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
         const id = e.target.id;
         const filterId = parseInt(id[id.length-1]);
         const toShow = [...questionText];
-        toShow[filterId] = mixedQuestions[filterId];
+        toShow[filterId] = questions[filterId];
         setQuestion(toShow);
         document.querySelectorAll(`.single-card`)[filterId].classList.add('opened-card');
         document.querySelector(`#${id}`).classList.add('hidden');
@@ -17,7 +17,7 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
         const id = e.target.id;
         const filterId = parseInt(id[id.length-1]);
         const toShow = [...questionText];
-        toShow[filterId] = mixedAnswers[filterId];
+        toShow[filterId] = answers[filterId];
         setQuestion(toShow);
         document.querySelector(`#${id}`).classList.add('hidden');
         document.querySelectorAll('.btns')[filterId].classList.remove('hidden');
@@ -53,13 +53,6 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
     }
 
     const {questions, answers} = deck;
-    const mixedIndexes = shuffle(questions);
-    const mixedQuestions = mixedIndexes.map((item) => {
-        return questions[item];
-    });
-    const mixedAnswers = mixedIndexes.map((item) => {
-        return answers[item];
-    });
     
     let cardText = [];
     for(let i = 0; i < questions.length; i++){
@@ -80,27 +73,6 @@ function SingleFlashCard({icon, setIcon, cont, setCont, avaliations, setAvaliati
             )}
         </Fragment>    
     );
-}
-
-function shuffle(questions){
-    let array = [];
-    for(let i = 0; i < questions.length; i++){
-        array.push(Math.floor(Math.random()*questions.length));
-    }
-    array = validateArray(array, questions);
-    return array;
-}
-function validateArray(array, questions){
-    for(let i = 0; i < array.length; i++){
-        for(let j = 0; j < array.length; j++){
-            if(i !== j){
-                if(array[i] === array[j]){
-                    array[j] = Math.floor(Math.random()*questions.length);
-                }
-            }
-        }
-    }
-    return array;
 }
     
 export default SingleFlashCard;

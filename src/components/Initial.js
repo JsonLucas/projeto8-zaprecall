@@ -4,7 +4,12 @@ import SelectDeck from './subcomponents/SelectDeck';
 function Initial({setInit, unsetRestart, goalZaps, setGoalZaps, setDeck}){
     function goToSelectDeck(e){
         if(!e.target.classList.contains('disabled')){
-            setGoalZaps(parseInt(document.querySelector('.ipt-goal').value));
+            const goalValue = parseInt(document.querySelector('.ipt-goal').value);
+            if(goalValue === 0){
+                setGoalZaps(1);
+            }else{
+                setGoalZaps(goalValue);
+            }
         }
     }
     function setSelectedDeck(e){
