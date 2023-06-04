@@ -1,0 +1,47 @@
+.wrapper{
+	padding: 30px;
+	width: 100%;
+	height: 100%;
+
+	.header{
+		margin-top: 20px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+
+		img {
+			width: 52px;
+			height: 60px;
+		}
+
+		p {
+			margin-left: 20px;
+			font-size: 36px;
+			color: white;
+			font-family: "Righteous";
+		}
+	}
+
+	.container-questions {		
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 50px;
+		max-height: 75vh;
+		// overflow-y: scroll;
+
+		@media screen and (max-width: 899px){
+			& {
+				width: 100%;
+			}
+		}
+
+		@media screen and (min-width: 900px){
+			& {
+				margin: 50px auto;
+				width: 70%;
+			}
+		}
+	}
+}
